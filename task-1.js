@@ -1,15 +1,15 @@
 "use strict"
 
 //////////////1\\\\\\\\\\\\\\\
-// const lentghList = document.getElementsByClassName('item').length;
-// console.log(`В списке ${lentghList} категории`);
+const lentghList = document.getElementsByClassName('item').length;
+console.log(`В списке ${lentghList} категории`);
 
-// const ul = Array.from(document.querySelector('#categories').children);
-// for (let elem of ul) {
-//     let category = elem.firstElementChild.textContent;
-//     let quantityElem = elem.lastElementChild.children.length;
-//     console.log(`Категория: ${category} \nКоличество элементов: ${quantityElem}`);
-// };
+const ulCategories = Array.from(document.querySelector('#categories').children);
+for (let elem of ulCategories) {
+    let category = elem.firstElementChild.textContent;
+    let quantityElem = elem.lastElementChild.children.length;
+    console.log(`Категория: ${category} \nКоличество элементов: ${quantityElem}`);
+};
 
 //////////////2\\\\\\\\\\\\\\\
 // const ingredients = [
@@ -21,11 +21,11 @@
 //   'Приправы',
 // ];
 
-// const ul = document.getElementById('ingredients')
+// const ulIngredients = document.getElementById('ingredients')
 // for(let ingredient of ingredients ){
-// const li = document.createElement('li')
-// li.textContent = ingredient;
-// ul.append(li);
+// const liIngredients = document.createElement('li')
+// liIngredients.textContent = ingredient;
+// ulIngredients.append(li);
 // }
 
 /////////////////3\\\\\\\\\\\\\\\\
@@ -48,7 +48,7 @@ const images = [
 
 ];
 
-const ul = document.getElementById('gallery')
+const ulImages = document.getElementById('gallery')
 
 const arrMap = images.map(image => {
   const img = document.createElement('img')
@@ -66,7 +66,67 @@ const arrMap = images.map(image => {
   li.append(img);
   li.insertAdjacentElement('beforeend', h2)
   h2.insertAdjacentElement("afterend", p)
-  ul.append(li)
+  ulImages.append(li)
 })
 console.log(document)
+
+//4
+const decrementCount = document.querySelector('button[data-action = "decrement"]');
+console.log(decrementCount)
+const incrementCount = document.querySelector('button[data-action = "increment"]');
+const counter = document.getElementById('value');
+
+let counterValue = 0;
+
+decrementCount.addEventListener("click", decrement )
+incrementCount.addEventListener("click", increment)
+
+function decrement(){
+  counterValue--;
+  counter.textContent = counterValue;
+}
+function increment(){
+  counterValue++;
+  counter.textContent = counterValue;
+}
+
+//5
+const inputRef = document.getElementById("name-input");
+const spanRef = document.getElementById("name-output");
+
+inputRef.addEventListener("input", forInputListener )
+
+function forInputListener(event){
+  spanRef.textContent = event.target.value;
+  if(event.target.value == ""){
+    spanRef.textContent = "незнакомец"
+  }
+}
+
+//6
+const inputValidation = document.getElementById('validation-input')
+
+const inputValidLength = inputValidation.dataset.length;
+
+
+inputValidation.addEventListener("focus", inputValidFunc )
+
+
+
+function inputValidFunc(){
+  if(inputValidation.value.length == inputValidLength){
+  
+  inputValidation.classList.add('valid')
+  inputValidation.classList.remove('invalid')
+}
+else{
+inputValidation.classList.add("invalid")
+}
+}
+inputValidation.addEventListener('blur', () =>{
+  inputValidation.classList.remove('invalid')
+  inputValidation.classList.remove('valid')
+})
+
+
 
