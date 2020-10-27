@@ -115,7 +115,7 @@ inputValidation.addEventListener("focus", inputValidFunc )
 
 function inputValidFunc(){
   if(inputValidation.value.length == inputValidLength){
-  
+
   inputValidation.classList.add('valid')
   inputValidation.classList.remove('invalid')
 }
@@ -127,6 +127,57 @@ inputValidation.addEventListener('blur', () =>{
   inputValidation.classList.remove('invalid')
   inputValidation.classList.remove('valid')
 })
+
+// 7
+const inputRange = document.getElementById("font-size-control");
+const spanRange = document.getElementById("text");
+
+inputRange.addEventListener('input', function() {
+    let size = inputRange.value;
+    // this sets the body's font size property, but you can set whatever you need to
+    spanRange.style.fontSize = size + "px";
+});
+
+// 8
+const divInput = document.getElementById("controls")
+const inputNumber = divInput.firstElementChild;
+console.dir(inputNumber)
+
+
+
+const butRender = document.querySelector('button[data-action="render"]')
+
+const butDestroy = document.querySelector('button[data-action="destroy"]')
+
+const newBoxes = document.getElementById('boxes')
+function randColor() {
+  let r = Math.floor(Math.random() * (256)),
+      g = Math.floor(Math.random() * (256)),
+      b = Math.floor(Math.random() * (256));
+  return '#' + r.toString(16) + g.toString(16) + b.toString(16);
+}
+
+
+butRender.addEventListener("click", ()=>{
+  let inputValue = inputNumber.value;
+
+  for(let i = 0; i< inputValue; i++){
+
+    let boxes = document.createElement('div')
+
+    boxes.classList.add('boxes_css')
+    boxes.style.backgroundColor = randColor()
+
+    newBoxes.appendChild(boxes)
+   }
+})
+
+butDestroy.addEventListener('click', ()=>{
+  newBoxes.remove(boxes)
+})
+
+
+// К сожалению не все условия были выполнены, я столкнулся с проблемами переделывая callback-функцию в обычную(оно не работало так), поэтому делаю хотя бы так, зато работает должным образом!)
 
 
 

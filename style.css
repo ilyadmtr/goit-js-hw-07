@@ -21,3 +21,10 @@
 #validation-input.invalid {
   border-color: #f44336;
 }
+
+/* 8 */
+.boxes_css{
+  width: 15px;
+  height: 15px;
+  margin: 5px;
+}
